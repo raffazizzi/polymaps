@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Adoratio - Adore Djatoka JPEG 2000 SVG viewer - demo</title>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/adoratio.js"></script>
+    <script src="../../polymaps.js"></script>
+    <link href="./css/polymaps.css" rel="stylesheet">
+    <style>
+      #container {width: 600px; height: 500px}      
+    </style>
+  </head>
+  <body>
+    <div id="container">
+
+    </div>
+
+    <script>
+      
+      var djatokaURL = "http://localhost:8080/adore-djatoka/resolver",
+          imageURL = "http://localhost:8080/adore-djatoka/demo/ox-ms_abinger_c56-0003.jp2";
+      var baseURL = djatokaURL + "?url_ver=Z39.88-2004&rft_id=" + imageURL;
+
+      $.ajax({
+        datatype: "json",
+        url: baseURL + "&svc_id=info:lanl-repo/svc/getMetadata",
+        success: adoratio($('#container'), baseURL)
+      })
+
+    </script>
+
+  </body>
+</html>
+
+</body>
