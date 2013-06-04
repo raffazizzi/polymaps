@@ -83,6 +83,7 @@ po.map = function() {
     }
     zoomFraction = zoom - (zoom = Math.round(zoom));
     zoomFactor = Math.pow(2, zoomFraction);
+    map.dispatch({type: "zoom"});
   }
 
   function recenter() {
