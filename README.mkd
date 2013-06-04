@@ -7,7 +7,15 @@ This is the `master` branch, which contains the Polymaps source code. If
 you're looking for the Polymaps website, you should checkout the `gh-pages`
 branch instead.
 
-## Viewing Examples
+## Polymaps-Djatoka integration
+
+This fork implements Polymaps as an SVG-based image viewer for JPEG2000 images served by a Djatoka server.
+
+Some of the source code has been changed to dispatch new types of events: `drag` and `zoom`.
+
+An example implementation in `examples/djatoka`.
+
+## Viewing Other Examples
 
 You'll find lots of Polymaps examples in the suitably-named `examples`
 directory. Open any of the HTML files there in your browser to view the
