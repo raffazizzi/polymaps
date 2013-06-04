@@ -457,6 +457,7 @@ po.map = function() {
     }
     zoomFraction = zoom - (zoom = Math.round(zoom));
     zoomFactor = Math.pow(2, zoomFraction);
+    map.dispatch({type: "zoom"});
   }
 
   function recenter() {
@@ -1537,6 +1538,7 @@ po.drag = function() {
     map.panBy({x: e.clientX - dragging.x, y: e.clientY - dragging.y});
     dragging.x = e.clientX;
     dragging.y = e.clientY;
+    map.dispatch({type: "drag"});
   }
 
   function mouseup(e) {
