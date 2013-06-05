@@ -22,10 +22,21 @@
           imageURL = "http://localhost:8080/adore-djatoka/demo/ox-ms_abinger_c56-0003.jp2";
       var baseURL = djatokaURL + "?url_ver=Z39.88-2004&rft_id=" + imageURL;
 
+      po = org.polymaps;
+      svg = po.svg("svg");
+
+      svg = document.getElementById("container").appendChild(svg);
+      svg.setAttribute('width', '100%');
+      svg.setAttribute('height', '100%');
+      g = svg.appendChild(po.svg("g"));
+
+      map = po.map()
+        .container(g);
+
       $.ajax({
         datatype: "json",
         url: baseURL + "&svc_id=info:lanl-repo/svc/getMetadata",
-        success: adoratio($('#container'), baseURL)
+        success: adoratio($('#container'), baseURL, map)
       })
 
     </script>
