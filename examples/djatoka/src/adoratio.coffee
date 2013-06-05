@@ -1,6 +1,6 @@
 (($) ->
 
-  window.adoratio = (c, baseURL)->    
+  window.adoratio = (c, baseURL, map)->    
 
     (data) ->
 
@@ -166,16 +166,8 @@
         bottomRight: map.locationPoint({lat:bottomLat, lon:rightLon})
 
       po = org.polymaps
-      svg = po.svg("svg")
 
-      svg = HTMLcontainer.appendChild(svg)
-      svg.setAttribute('width', '100%')
-      svg.setAttribute('height', '100%')
-      g = svg.appendChild(po.svg("g"))
-
-      map = po.map()
-        .container(g)
-        .add(po.dblclick())
+      map.add(po.dblclick())
         .add(dj.drag())
         .add(po.wheel())
         # .add(po.grid()) #debug
