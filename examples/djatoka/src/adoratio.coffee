@@ -4,8 +4,6 @@
 
     (data) ->
 
-      HTMLcontainer  = c.get(0)
-
       data.levels = parseInt(data.levels)
       data.height = parseInt(data.height)
       data.width = parseInt(data.width)
@@ -180,7 +178,7 @@
 
       # FIRST ZOOM AND POSITION
 
-      startZoom = (Math.ceil(data.levels + Math.log(HTMLcontainer.clientWidth)/Math.log(2) - Math.log(data.width)/Math.log(2)))-1
+      startZoom = (Math.ceil(data.levels + Math.log(c.clientWidth)/Math.log(2) - Math.log(data.width)/Math.log(2)))-1
 
       map.zoomRange([startZoom, data.levels])
         .zoom(startZoom)
@@ -193,7 +191,7 @@
         p = getImgPosition(data.levels, map.zoom())
         currentImgSize = dj.getImgDimensions(map.zoom())
 
-        if p.topLeft.x + currentImgSize.w > 20 and p.bottomRight.y > 20 and p.bottomRight.x - currentImgSize.w < HTMLcontainer.clientWidth-20 and p.topLeft.y < HTMLcontainer.clientHeight-20
+        if p.topLeft.x + currentImgSize.w > 20 and p.bottomRight.y > 20 and p.bottomRight.x - currentImgSize.w < c.clientWidth-20 and p.topLeft.y < c.clientHeight-20
           0
         else 
           map.center(dj.cc)
