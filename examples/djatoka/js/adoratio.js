@@ -3,9 +3,8 @@
   (function($) {
     return window.adoratio = function(c, baseURL, map) {
       return function(data) {
-        var HTMLcontainer, dj, getImgCenter, getImgPosition, getImgTiles, po, startZoom;
+        var dj, getImgCenter, getImgPosition, getImgTiles, po, startZoom;
 
-        HTMLcontainer = c.get(0);
         data.levels = parseInt(data.levels);
         data.height = parseInt(data.height);
         data.width = parseInt(data.width);
@@ -215,7 +214,7 @@
         };
         po = org.polymaps;
         map.add(po.dblclick()).add(dj.drag()).add(po.wheel());
-        startZoom = (Math.ceil(data.levels + Math.log(HTMLcontainer.clientWidth) / Math.log(2) - Math.log(data.width) / Math.log(2))) - 1;
+        startZoom = (Math.ceil(data.levels + Math.log(c.clientWidth) / Math.log(2) - Math.log(data.width) / Math.log(2))) - 1;
         map.zoomRange([startZoom, data.levels]).zoom(startZoom);
         dj.cc = map.center();
         map.center(getImgCenter(data.levels, startZoom));
@@ -224,7 +223,7 @@
 
           p = getImgPosition(data.levels, map.zoom());
           currentImgSize = dj.getImgDimensions(map.zoom());
-          if (p.topLeft.x + currentImgSize.w > 20 && p.bottomRight.y > 20 && p.bottomRight.x - currentImgSize.w < HTMLcontainer.clientWidth - 20 && p.topLeft.y < HTMLcontainer.clientHeight - 20) {
+          if (p.topLeft.x + currentImgSize.w > 20 && p.bottomRight.y > 20 && p.bottomRight.x - currentImgSize.w < c.clientWidth - 20 && p.topLeft.y < c.clientHeight - 20) {
             return 0;
           } else {
             return map.center(dj.cc);
