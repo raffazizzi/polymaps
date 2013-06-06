@@ -6,6 +6,10 @@
 
       HTMLcontainer  = c.get(0)
 
+      data.levels = parseInt(data.levels)
+      data.height = parseInt(data.height)
+      data.width = parseInt(data.width)
+
       dj = {}
 
       dj.tile2long = (x,z) ->
@@ -176,9 +180,9 @@
 
       # FIRST ZOOM AND POSITION
 
-      startZoom = (Math.ceil(parseInt(data.levels) + Math.log(HTMLcontainer.clientWidth)/Math.log(2) - Math.log(data.width)/Math.log(2)))-1
+      startZoom = (Math.ceil(data.levels + Math.log(HTMLcontainer.clientWidth)/Math.log(2) - Math.log(data.width)/Math.log(2)))-1
 
-      map.zoomRange([startZoom, parseInt(data.levels)])
+      map.zoomRange([startZoom, data.levels])
         .zoom(startZoom)
 
       dj.cc = map.center()
