@@ -178,7 +178,7 @@
 
       # FIRST ZOOM AND POSITION
 
-      startZoom = (Math.ceil(data.levels + Math.log(c.clientWidth)/Math.log(2) - Math.log(data.width)/Math.log(2)))-1
+      startZoom = data.levels + Math.log(c.clientWidth)/Math.log(2) - Math.log(data.width)/Math.log(2)
 
       map.zoomRange([startZoom, data.levels])
         .zoom(startZoom)
