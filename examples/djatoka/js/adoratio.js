@@ -214,7 +214,7 @@
         };
         po = org.polymaps;
         map.add(po.dblclick()).add(dj.drag()).add(po.wheel());
-        startZoom = (Math.ceil(data.levels + Math.log(c.clientWidth) / Math.log(2) - Math.log(data.width) / Math.log(2))) - 1;
+        startZoom = data.levels + Math.log(c.clientWidth) / Math.log(2) - Math.log(data.width) / Math.log(2);
         map.zoomRange([startZoom, data.levels]).zoom(startZoom);
         dj.cc = map.center();
         map.center(getImgCenter(data.levels, startZoom));
