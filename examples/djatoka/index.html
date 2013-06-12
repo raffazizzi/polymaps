@@ -8,7 +8,7 @@
     <script src="../../polymaps.js"></script>
     <link href="./css/polymaps.css" rel="stylesheet">
     <style>
-      #container {width: 600px; height: 500px}      
+      #container {width: 555px; height: 747px}      
     </style>
   </head>
   <body>
@@ -19,7 +19,7 @@
     <script>
       
       var djatokaURL = "http://localhost:8080/adore-djatoka/resolver",
-          imageURL = "http://localhost:8080/adore-djatoka/demo/ox-ms_abinger_c56-0003.jp2";
+          imageURL = "http://localhost:8080/adore-djatoka/demo/ox-ms_abinger_c56-0050.jp2";
       var baseURL = djatokaURL + "?url_ver=Z39.88-2004&rft_id=" + imageURL;
 
       po = org.polymaps;
@@ -31,13 +31,19 @@
       g = svg.appendChild(po.svg("g"));
 
       map = po.map()
-        .container(g);
+        .container(g)
+        .add(po.compass()
+          .pan("none"));
 
-      $.ajax({
+      t = $.ajax({
         datatype: "json",
         url: baseURL + "&svc_id=info:lanl-repo/svc/getMetadata",
-        success: adoratio($('#container'), baseURL, map)
-      })
+        success: adoratio(document.getElementById('container'), baseURL, map)
+      });
+
+      t.then(function(){
+        console.log(map.zoom());
+      });
 
     </script>
 
