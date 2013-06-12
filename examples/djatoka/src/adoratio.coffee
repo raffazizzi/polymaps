@@ -187,9 +187,15 @@
 
       map.center(getImgCenter(data.levels, startZoom))
 
+      map.on 'zoom', ->
+        p = getImgPosition(data.levels, map.zoom())
+        map.position = p
+
       map.on 'drag', ->
         p = getImgPosition(data.levels, map.zoom())
         currentImgSize = dj.getImgDimensions(map.zoom())
+
+        map.position = p
 
         if p.topLeft.x + currentImgSize.w > 20 and p.bottomRight.y > 20 and p.bottomRight.x - currentImgSize.w < c.clientWidth-20 and p.topLeft.y < c.clientHeight-20
           0
@@ -198,7 +204,6 @@
 
       map.add(dj.image())
 
-      map.add(po.compass()
-        .pan("none"))  
+      return map 
 
 )(jQuery)
