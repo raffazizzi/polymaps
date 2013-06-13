@@ -187,6 +187,9 @@
 
       map.center(getImgCenter(data.levels, startZoom))
 
+      # Always expose image position
+      map.position = getImgPosition(data.levels, map.zoom())
+
       map.on 'zoom', ->
         p = getImgPosition(data.levels, map.zoom())
         map.position = p
